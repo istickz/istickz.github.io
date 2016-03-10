@@ -1,8 +1,9 @@
 ---
 title: Установка LocomotiveCMS Wagon на Windows 8.1
 permalink: /ru/install-locomotivecms-wagon-on-windows-8-1
-categories: [Ruby]
-tags: [ruby]
+categories: ['Ruby', 'Туториалы']
+tags: ['ruby', 'locomotivecms', 'windows']
+
 ---
 
 Сегодня я расскажу как легко и непринуженно установить LocomotiveCMS Wagon на Windows 8.1

@@ -1,8 +1,9 @@
 ---
 title: Скрипт выхода из групп вконтакте
 permalink: /ru/leave-vk-groups-script/
-categories: [Ruby]
-tags: [ruby]
+categories: ['Ruby', 'Туториалы', 'Социальные сети']
+tags: ['ruby', 'vkontakte']
+
 ---
 
 

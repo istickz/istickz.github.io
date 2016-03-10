@@ -2,8 +2,9 @@
 title: Настройка окружения для разработки на Ruby on Rails
 layout: post
 permalink: /ru/setup-environment-for-development-on-ruby-on-rails/
-categories: [Ruby]
-tags: [ruby]
+categories: ['Ruby', 'Туториалы']
+tags: ['ruby', 'ruby-on-rails']
+
 ---
 Сегодня я покажу как из свежеустановленного linux сделать хорошую рабочую машинку готовую помочь вам разрабатывать приложения быстро, легко и непринужденно.
 <!--more-->

@@ -1,8 +1,9 @@
 ---
 title: Деплой Rails приложения на DigitalOcean
 permalink: /ru/deploy-rails-app/
-categories: [Ruby]
-tags: [ruby]
+categories: ['Ruby', 'Туториалы']
+tags: ['ruby', 'ruby-on-rails', deploy, 'vps']
+
 ---
 Долгие ночи ты писал код своего супер приложения на Ruby on Rails. Готов ли ты к тому, чтобы его увидел весь мир? Пора тебе уже выйти из development режима и опробовать наконец production версию твоего приложения.
 

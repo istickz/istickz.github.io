@@ -1,8 +1,9 @@
 ---
 title: Rails on Vagrant или 6 простых шагов чтобы начать разработку на Rails в Windows
 permalink: /ru/vagrant-and-rails-development-on-windows/
-categories: [Ruby]
-tags: [ruby]
+categories: ['Ruby', 'Туториалы']
+tags: ['ruby', 'vagrant']
+
 ---
 Вопреки всем доводам о том, что разработка Rails приложения в Windows не очень комфортная, решил написать этот пост, который поможет новичкам быстро прийти в мир Rails не травмируя свою психику изучением linux, настройкой окружения под него и рядом других задач, отнимающих много времени и сил.  
 <!--more-->

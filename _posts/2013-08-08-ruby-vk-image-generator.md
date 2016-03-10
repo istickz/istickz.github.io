@@ -1,8 +1,9 @@
 ---
 title: Генератор картинок для групп Вконтакте
 permalink: /ru/ruby-vk-image-generator/
-categories: [Ruby]
-tags: [ruby]
+categories: ['Ruby', 'Туториалы', 'Социальные сети']
+tags: ['ruby', 'vkontakte']
+
 ---
 
 Сегодня я расскажу, как нписать приложение для генерации картинок и постинга их в социальную сеть вконтакте.
