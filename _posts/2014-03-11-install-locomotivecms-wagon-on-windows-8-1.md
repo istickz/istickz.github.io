@@ -4,10 +4,14 @@ permalink: /ru/install-locomotivecms-wagon-on-windows-8-1
 categories: [Ruby]
 tags: [ruby]
 ---
+
+Сегодня я расскажу как легко и непринуженно установить LocomotiveCMS Wagon на Windows 8.1
+<!--more-->
+
 ### 1. Установка RubyInstaller
 
 Переходим сюда: <http://rubyinstaller.org/downloads/>, выбираем версию и устанавливаем. При установке не забудте поставить все галочки которые попросит инсталлятор.
-<!--more-->
+
 ### [][1]{#user-content-development-kit.anchor}2. Устаноквка DevKit
 
 По ссылке выше находим ссылки для скачивания DevKit. Не забудьте скачать версию kit именно для вашей версии и разрядности интерпретатора Ruby.
