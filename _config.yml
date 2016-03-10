@@ -3,8 +3,8 @@ title: 'Temur Fatkulin'
 description: 'Ruby делает наш мир проще!'
 url: 'http://istickz.ru/'
 baseurl: '/'
-# google_analytics: 'UA-XXXXXX-X'
-# disqus_shortname: 'your-disqus-name'
+google_analytics: 'UA-43434724-1'
+disqus_shortname: 'istickz'
 
 author:
   name:  'Temur Fatkulin'
