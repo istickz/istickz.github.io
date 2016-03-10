@@ -1,0 +1,39 @@
+# Site settings
+title: 'Temur Fatkulin'
+description: 'Ruby делает наш мир проще!'
+url: 'http://istickz.ru/'
+baseurl: '/'
+# google_analytics: 'UA-XXXXXX-X'
+# disqus_shortname: 'your-disqus-name'
+
+author:
+  name:  'Temur Fatkulin'
+  email: temur.fatkulin@gmail.com
+  twitter_username: temstickz
+  facebook_username: temur.fatkulin
+  github_username: istickz
+  linkedin_username:  istickz
+
+defaults:
+  -
+    scope:
+      path: ''
+      type: 'posts'
+    values:
+        layout: 'post'
+
+# Build settings
+destination: _site
+paginate: 10
+permalink: /:year/:title/
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  # use Github Flavored Markdown
+  input: GFM
+  # do not replace newlines by <br>s
+  hard_wrap: false
+
+gems: ['jekyll-paginate']
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock']
