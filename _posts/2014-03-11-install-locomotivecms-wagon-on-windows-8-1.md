@@ -7,7 +7,7 @@ tags: [ruby]
 ### 1. Установка RubyInstaller
 
 Переходим сюда: <http://rubyinstaller.org/downloads/>, выбираем версию и устанавливаем. При установке не забудте поставить все галочки которые попросит инсталлятор.
-
+<!--more-->
 ### [][1]{#user-content-development-kit.anchor}2. Устаноквка DevKit
 
 По ссылке выше находим ссылки для скачивания DevKit. Не забудьте скачать версию kit именно для вашей версии и разрядности интерпретатора Ruby.
@@ -15,12 +15,15 @@ tags: [ruby]
 Распаковываем в любое место. Я распаковал сюда: C:\DevKit Далее, запустим консоль &#171;Start Command Prompt with Ruby&#187; из меню приложений Windows.  
 Переходим в папку с DevKit
 
-```$ cd c:\DevKit
+```
+$ cd c:\DevKit
+
 ```
 
 И собственно, производим установку DevKit
 
-```$ ruby dk.rb init
+```
+$ ruby dk.rb init
 $ ruby dk.rb review
 $ ruby dk.rb install
 ```
@@ -35,30 +38,35 @@ $ ruby dk.rb install
 
 #### [][3]{#user-content-bundler.anchor}Bundler
 
-```$ gem install bundler
+```
+$ gem install bundler
 ```
 
 #### [][4]{#user-content-rake.anchor}Rake
 
-```$ gem install rake
+```
+$ gem install rake
 ```
 
 * * *
 
 ### [][5]{#user-content-Установка--locomotivecms-wagon.anchor}4. Установка LocomotiveCMS Wagon
 
-```$ gem install locomotivecms_wagon
+```
+$ gem install locomotivecms_wagon
 ```
 
 Проверяем версию:
 
-```$ wagon version
+```
+$ wagon version
 1.4.0
 ```
 
 Отлично. Давайте создадим тестовый проект и запустим сервер.
 
-```$ wagon init testapp
+```
+$ wagon init testapp
 ....
 ....
 Do you prefer HAML templates ? n
@@ -68,7 +76,8 @@ Do you prefer HAML templates ? n
 
 Перейдем в приложение, установим недостающие гемы и запустим сервер:
 
-```$ cd testapp
+```
+$ cd testapp
 $ bundle install
 $ bundle exec wagon serve
 ```
@@ -77,33 +86,38 @@ $ bundle exec wagon serve
 
 Если вы получили ошибку:
 
-```Can't get the absolute path for the passed directory: ''!
+```
+Can't get the absolute path for the passed directory: ''!
 ```
 
 то запускайте сервер с указанием абсолютного пути к папке:
 
-```$ bundle exec wagon serve с:/testapp
-
+```
+$ bundle exec wagon serve с:/testapp
 ```
 
 Либо отредактируйте файл wagon(C:\Ruby200\bin\wagon) добавив в самое начало файла строку: &#171;ARGV << Dir.pwd&#187;
 
 Также вы можете получать ошибку перед запуском сервера:
 
-```C:/Ruby200/bin/wagon: No such file or directory - which convert
-&gt;&gt; Thin web server (v1.5.1 codename Straight Ra
-&gt;&gt; Maximum connections set to 1024
-&gt;&gt; Listening on 0.0.0.0:3333, CTRL+C to stop
+```
+C:/Ruby200/bin/wagon: No such file or directory - which convert
+Thin web server (v1.5.1 codename Straight Ra
+Maximum connections set to 1024
+Listening on 0.0.0.0:3333, CTRL+C to stop
 ```
 
 Чтобы избавиться от ошибки поиска ImageMagic заменим строчку в файле C:\Ruby200\lib\ruby\gems\2.0.0\gems\locomotivecms_wagon-1.4.0\lib\locomotive\wagon\misc\dragonfly.rb
 
-```convert = `which convert`.strip.presence || '/usr/bin/env convert' 
+```
+convert = `which convert`.strip.presence || '/usr/bin/env convert' 
 ```
 
 на
 
-```convert = `where convert`.strip.presence```
+```
+convert = `where convert`.strip.presence
+```
 
  [1]: https://gist.github.com/istickz/9475935#development-kit
  [2]: https://gist.github.com/istickz/9475935#Установка-нужных-гемов

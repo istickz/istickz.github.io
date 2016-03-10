@@ -4,10 +4,10 @@ permalink: /ru/leave-vk-groups-script/
 categories: [Ruby]
 tags: [ruby]
 ---
-<!--more-->
+
 
 Сегодня я с ужасом обнаружил, что состою в 266 сообществах вконтакте! Это нужно было срочно исправить и выйти из ненужных мне сообществ.
-
+<!--more-->
 Я нашел несколько вариантов решения данной проблемы:
 
   1. Выходить самостоятельно.  
@@ -33,7 +33,8 @@ tags: [ruby]
 Все, приложение готово. Осталось только взять ID нашего приложения и секретный ключ приложения.  
 ID нужен для получения токена, а секретный ключ для работы самого приложения. Для этого преходим в настройки, забираем ID и начинаем создавать токен. Нам нужны права только для группы и, чтобы токен не имел срока годности, а это значит что нужно ввести в адресную строку следующую ссылку:
 
-```https://oauth.vk.com/authorize? 
+```
+https://oauth.vk.com/authorize? 
  client_id=APP_ID& 
  scope=groups, offline& 
  redirect_uri=https://oauth.vk.com/blank.html& 
@@ -46,7 +47,7 @@ ID нужен для получения токена, а секретный кл
 
 Ну, что ж, начнем писать наше приложение.
 
-```<code class="ruby"> 
+```
 require 'vkontakte_api'
 
 VK_APP_ID = 'ID приложения'
@@ -89,9 +90,6 @@ client_groups.each do |group_id|
   puts "-"*50
 end
 
-
-
-</code> 
 ```
 
 Готово!  
@@ -101,7 +99,8 @@ end
 
 Внимание! Если у вас `require 'vkontakte_api` вывалился с ошибкой:
 
-```Gem::LoadError: Unable to activate faraday_middleware-0.9.0, because faraday-0.9.0 conflicts with faraday (&lt; 0.9, &gt;= 0.7.4)
+```
+Gem::LoadError: Unable to activate faraday_middleware-0.9.0, because faraday-0.9.0 conflicts with faraday (&lt; 0.9, = 0.7.4)
 ```
 
 То нужно установить gem faraday помладше, ну например версии: 0.8.9

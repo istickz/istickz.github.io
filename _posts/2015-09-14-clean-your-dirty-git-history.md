@@ -25,7 +25,9 @@ tags: [ruby]
 
 Делаем это как обычно, но с ключом &#8212;mirror
 
-```$ git clone --mirror git@yourdomain.com:mydirtyrepo```
+```
+$ git clone --mirror git@yourdomain.com:mydirtyrepo
+```
 
 По сути, мы создаем зеркальную копию репозитория с нашего сервера.
 
@@ -33,20 +35,25 @@ tags: [ruby]
 
 Если мы знаем имена злосчатсных файлов от которых нужно навсегда извбавиться, то выполняем такую команду:
 
-```$ java -jar bfg.jar --delete-files filename mydirtyrepo.git```
+```
+$ java -jar bfg.jar --delete-files filename mydirtyrepo.git
+```
 
 где filename &#8212; это название файла, информацию о котором нужно бесследно стереть.
 
 Если же вы хотите избавиться всех файлов, которые когда либо были в вашем проекте и весили, например больше 20мб то сделать это тоже достаточно просто:
 
-```$ bfg --strip-blobs-bigger-than 20M  mydirtyrepo.git```
+```
+$ bfg --strip-blobs-bigger-than 20M  mydirtyrepo.git
+```
 
 Кроме этого, BFG Repo-Cleaner умеет удалять папки, файлы по маске, а также заменять содержимое файлов во всей истории.
 
 После того как все ненужное удалено, пора бы закрепить изменения и запушить все на сервер.  
 Для этого выполняем всего 3 команды в консоли:
 
-```$ cd some-big-repo.git
+```
+$ cd some-big-repo.git
 $ git reflog expire --expire=now --all && git gc --prune=now --aggressive
 $ git push
 

@@ -7,7 +7,7 @@ tags: [ruby]
 Долгие ночи ты писал код своего супер приложения на Ruby on Rails. Готов ли ты к тому, чтобы его увидел весь мир? Пора тебе уже выйти из development режима и опробовать наконец production версию твоего приложения.
 
 Сегодня мы настроим свежекупленный VPS под нужды наших Rails приложений и развернем на него тестовое приложение.
-
+<!--more-->
 Статья будет состоять из 4-х частей:
 
   1. Предподготовка  
@@ -38,7 +38,8 @@ tags: [ruby]
 
 Переходим в директорию SSH ключей
 
-```$ cd ~/.ssh
+```
+$ cd ~/.ssh
 ```
 
 Создадим новый ключ для DigitalOcean
@@ -49,18 +50,21 @@ Generating public/private rsa key pair.
 
 В процессе генерации нужно указать название ключа:
 
-```Enter file in which to save the key (/home/username/.ssh/id_rsa):digital_ocean_rsa
+```
+Enter file in which to save the key (/home/username/.ssh/id_rsa):digital_ocean_rsa
 ```
 
 Далее следует ввести пароли для ключей, но мы смело пропустим их нажав Enter.
 
-```Enter passphrase (empty for no passphrase): 
+```
+Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: 
 ```
 
 Генерация ключа должна закончиться вот таким вот сообщением:
 
-```Your identification has been saved in digital_ocean_rsa.
+```
+Your identification has been saved in digital_ocean_rsa.
 Your public key has been saved in digital_ocean_rsa.pub.
 The key fingerprint is:
 5e:72:rd:01:c4:36:84:23:ef:45:5b:ef:5z:e2:72:74 
@@ -83,7 +87,8 @@ The key's randomart image is:
 
 Скопируем созданный ключ:
 
-```$ xclip -sel clip &lt; ~/.ssh/digital_ocean_rsa.pub
+```
+$ xclip -sel clip &lt; ~/.ssh/digital_ocean_rsa.pub
 ```
 
 Все, ключ в буфере обмена. Можно смело идти в раздел [SSH Keys][3] панели управления DO и и добавить наш ключ. На этом предподготовку можно считать завершенной
@@ -114,12 +119,14 @@ The key's randomart image is:
 Итак, у нас есть дроплет, пора бы соединиться с ним.  
 IP своего сервера можно посмотреть в самом верху панели управления дроплетом.
 
-```ssh root@xx.xx.xx.xx
+```
+ssh root@xx.xx.xx.xx
 ```
 
 Если все хорошо, то видим нечто подобное:
 
-```root@Jarvis:~# 
+```
+root@Jarvis:~# 
 ```
 
 Отлично, теперь нужно позаботиться о безопасности дроплета.
@@ -128,51 +135,64 @@ IP своего сервера можно посмотреть в самом в�
 
 #### Добавление пользователя {#}
 
-```adduser username
+```
+adduser username
 ```
 
 Отвечаем на вопросы, подтверждаем информацию и пользователь готов.
 
 Теперь дадим ему нормальные права
 
-```visudo
+```
+visudo
 ```
 
 Находим следующие строки:
 
-```# User privilege specification
+```
+# User privilege specification
 root    ALL=(ALL:ALL) ALL
 ```
 
 И прямо под рутом добавляем своего пользователя с такими же правами
 
-```username ALL=(ALL:ALL) ALL
+```
+username ALL=(ALL:ALL) ALL
 ```
 
 Сохраняемся и выходим из редактора.
 
+
 #### Смена порта SSH {#ssh}
+
+```
+nano /etc/ssh/sshd_config
+```
 
 Находим строку:
 
-```Port 22
+```
+Port 22
 ```
 
 И &#171;22&#187; поменяем на какой нибудь другой порт по своему желанию(1025..65536):
 
-```Port 6629
+```
+Port 6629
 ```
 
 #### Отключение входа root пользователем {#root}
 
 В этом же файле находим строку PermitRootLogin и ставим ей значение &#8216;no&#8217;:
 
-```PermitRootLogin no
+```
+PermitRootLogin no
 ```
 
 И в конец самого файла добавляем строчки
 
-```UseDNS no
+```
+UseDNS no
 AllowUsers username
 ```
 
@@ -180,29 +200,34 @@ AllowUsers username
 
 Перезагружаем SSH
 
-```reload ssh
+```
+reload ssh
 ```
 
 Теперь, создадим новую вкладку в терминале и попробуем соединиться
 
-```ssh -p 6629 username@123.123.123.123
+```
+ssh -p 6629 username@123.123.123.123
 ```
 
 Вводим пароль и мы залогинены под нашим пользователем. Теперь скопируем ssh ключ нашему пользователю.
 
 Создадим папку ssh
 
-```username@Jarvis:~$ mkdir .ssh
+```
+username@Jarvis:~$ mkdir .ssh
 ```
 
 Завершаем ssh соединение, чтобы скопировать ssh ключ с локального компьютера.
 
-```$ cat ~/.ssh/digital_ocean_rsa.pub | ssh -p 6629 username@xxx.xxx.xxx.xxx "cat &gt;&gt; ~/.ssh/authorized_keys"
+```
+$ cat ~/.ssh/digital_ocean_rsa.pub | ssh -p 6629 username@xxx.xxx.xxx.xxx "cat  ~/.ssh/authorized_keys"
 ```
 
 Если все прошло успешно, то пробуем заново залогиниться на сервере:
 
-```ssh -p 6629 username@95.85.27.37 
+```
+$ ssh -p 6629 username@95.85.27.37 
 ```
 
 Если система не спрашивает у нас пароль то проедыдущий шаг мы сделали правильно.
@@ -213,14 +238,16 @@ AllowUsers username
 
 Если вам неспокойно от того что время от времени могут появляться сообщения такого рода:
 
-```locale: Cannot set LC_CTYPE to default locale: No such file or directory
+```
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
 locale: Cannot set LC_MESSAGES to default locale: No such file or directory
 locale: Cannot set LC_ALL to default locale: No such file or directory
 ```
 
 то рекомендую поставить русскую локаль.
 
-```$ localedef ru_RU.UTF-8 -i ru_RU -fUTF-8
+```
+$ localedef ru_RU.UTF-8 -i ru_RU -fUTF-8
 ```
 
 после этого вы на всегда забудете об ожибках локалейи и вам будет доступен ввод уириллицы из консоли.
@@ -229,7 +256,8 @@ locale: Cannot set LC_ALL to default locale: No such file or directory
 
 Обновление системы рекомендуется делать сразу же после первой авторизации на сервере, но и сейчас не поздно сделать это.
 
-```$ sudo apt-get update
+```
+$ sudo apt-get update
 $ sudo apt-get upgrade
 ```
 
@@ -237,37 +265,43 @@ $ sudo apt-get upgrade
 
 #### RVM {#rvm}
 
-```$ \curl -sSL https://get.rvm.io | bash -s stable
+```
+$ \curl -sSL https://get.rvm.io | bash -s stable
 $ source /home/username/.rvm/scripts/rvm
 ```
 
 #### Установка всех зависимостей, которые могут пригодиться: {#}
 
-```$ rvm requirements
+```
+$ rvm requirements
 ```
 
 во время выполнения этой команды установятся следующие пакеты: `gawk, g++, gcc, make, libc6-dev, libreadline6-dev, zlib1g-dev, libssl-dev, libyaml-dev, libsqlite3-dev, sqlite3, autoconf, libgdbm-dev, libncurses5-dev, automake, libtool, bison, pkg-config, libffi-dev`
 
 #### Ruby 2.0.0: {#ruby200}
 
-```rvm install 2.0.0 && rvm use 2.0.0 --default
+```
+rvm install 2.0.0 && rvm use 2.0.0 --default
 ```
 
 #### Установка последней версии RubyGems {#rubygems}
 
-```$ rvm rubygems current
+```
+$ rvm rubygems current
 ```
 
 ### 3.5 Установка MySQL {#35mysql}
 
-```$ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+```
+$ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
 ```
 
 ### 3.6 Установка Node.js {#36nodejs}
 
 Установку Node.js будем проводить с помощью NVM
 
-```$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+```
+$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
 
 $ source ~/.profile
 $ nvm ls-remote
@@ -287,13 +321,14 @@ v0.11.11
 $ nvm use v0.11.11 
 Now using node v0.11.11
 $ nvm alias default v0.11.11
-default -&gt; v0.11.11
+default - v0.11.11
 
 ```
 
 ### 3.7 Установка NGINX {#37nginx}
 
-```$ sudo apt-get install nginx
+```
+$ sudo apt-get install nginx
 $ sudo service nginx start
 ```
 
@@ -309,10 +344,12 @@ $ sudo service nginx start
 
 Отсоединимся от сервера и в директории с нашими разработками создадим тестовое приложение
 
-```$ rails new testapp -d mysql
+```
+$ rails new testapp -d mysql
 ```
 
-```$ git init
+```
+$ git init
 $ git add .
 $ git commit -m "initial commit"
 $ git remote add origin https://github.com/istickz/testapp.git
@@ -322,7 +359,7 @@ $ git remote add origin https://github.com/istickz/testapp.git
 
 testapp/config/database.yml
 
-    
+```    
     development:
       adapter: mysql2
       encoding: utf8
@@ -340,13 +377,13 @@ testapp/config/database.yml
       username: root
       password: 121212
       socket: /var/run/mysqld/mysqld.sock
-    
+```    
 
 Секцию production я предлагаю вынести в отдельный файл:
 
 config/production_database.yml
 
-    
+```    
     production:
       adapter: mysql2
       encoding: utf8
@@ -355,18 +392,20 @@ config/production_database.yml
       username: someuser
       password: somepassword
       socket: /var/run/mysqld/mysqld.sock
-    
+```    
 
 и добавить в файл .gitignore
 
-```$ echo "config/production_database.yml" &gt;&gt; .gitignore
+```
+$ echo "config/production_database.yml"  .gitignore
 $ git add .gitignore 
 $ git commit -m "ignore database configuration for production" 
 ```
 
 После чего, занесем изменения в коммит.
 
-```$ git add /config/database.yml
+```
+$ git add /config/database.yml
 $ git commit -m "configure only for test and development"
 ```
 
@@ -374,14 +413,16 @@ $ git commit -m "configure only for test and development"
 
 Пусть наше приложение будет блогом:
 
-```$ rails g scaffold Post title:string description:text
+```
+$ rails g scaffold Post title:string description:text
 ```
 
 Далее добавим страницу открываемую по умолчанию:
 
 testapp/config/routes.rb
 
-```Testapp::Application.routes.draw do
+```
+Testapp::Application.routes.draw do
   resources :posts
 
   root 'posts#index'
@@ -390,13 +431,15 @@ end
 
 Создадим базу данных и накатим миграции:
 
-```$ rake db:create
+```
+$ rake db:create
 $ rake db:migrate
 ```
 
 Пока изменений не накопилось достаточно много, нужно их закоммитить.
 
-```git add config/routes.rb 
+```
+git add config/routes.rb 
 git commit -m "now posts is a root page"
 git add .
 git commit -m "add posts"
@@ -411,7 +454,8 @@ git push origin master
 
 В Gemfile добавим следующие строки:
 
-```group :development do
+```
+group :development do
   gem 'rvm-capistrano'
   gem 'capistrano'
 end
@@ -425,23 +469,26 @@ end
 
 Делаем
 
-```$ bundle install
+```
+$ bundle install
 $ git commit -am "add unicorn and capistrano gems"
 ```
 
 И создаем файлы конфигурации для Capistrano:
 
-```$ capify .
+```
+$ capify .
 [add] writing './Capfile'
 [add] writing './config/deploy.rb'
 [done] capified!
-echo "/config/deploy.rb" &gt;&gt; .gitignore
+echo "/config/deploy.rb"  .gitignore
 git commit -am "ignore deploy configuration"
 ```
 
 Теперь нужно создать еще несколько конфигурационных файлов:
 
-```$ touch config/nginx.conf
+```
+$ touch config/nginx.conf
 $ touch config/unicorn.rb
 $ touch config/unicorn_init.sh
 ```
@@ -452,16 +499,16 @@ $ touch config/unicorn_init.sh
 
 /Capfile
 
-      
+```      
     load 'deploy'
     load 'deploy/assets'
     load 'config/deploy'
-    
+```    
     
 
 /config/deploy.rb
 
-    
+```    
     require "rvm/capistrano"
     require "bundler/capistrano"
     
@@ -517,11 +564,11 @@ $ touch config/unicorn_init.sh
     
     end
     
-    
+```    
 
 config/nginx.conf
 
-    
+```    
     upstream unicorn {
       server unix:/tmp/unicorn.testapp.sock fail_timeout=0;
     }
@@ -550,12 +597,12 @@ config/nginx.conf
       client_max_body_size 4G;
       keepalive_timeout 10;
     }
-    
+```    
     
 
 config/unicorn.rb
 
-    
+```    
     root = "/var/www/testapp/current"
     working_directory root
     pid "#{root}/tmp/pids/unicorn.pid"
@@ -571,13 +618,13 @@ config/unicorn.rb
     before_exec do |_|
       ENV["BUNDLE_GEMFILE"] = File.join(root, 'Gemfile')
     end
-    
+```    
     
 
 config/unicorn_init.sh
 
     
-    
+```    
     #!/bin/sh
     ### BEGIN INIT INFO
     # Provides:          unicorn
@@ -662,17 +709,19 @@ config/unicorn_init.sh
       exit 1
       ;;
     esac
-    
+```    
     
 
 Не забываем сделать файл исполняемым.
 
-```chmod +x config/unicorn_init.sh 
+```
+chmod +x config/unicorn_init.sh 
 ```
 
 Запушим конфигурационные файлы в репозиторий:
 
-```$ git add .
+```
+$ git add .
 $ git commit "Add configuration files"
 $ git push origin master
 ```
@@ -681,25 +730,29 @@ $ git push origin master
 
 Конфигурационные файлы готовы, пора приступать к заливке приложения, но прежде давайте заново авторизуемся на сервере и выставим права на папку /var/www/ для пользователя username:
 
-```sudo chown -R username:username /var/www
+```
+sudo chown -R username:username /var/www
 sudo chmod -R g+w /var/www
 ```
 
 Теперь можно спокойно сказать Capistrano, чтобы подготовило необходимую структуру папок на сервере и закинуло конфигурационные файлы куда нужно.
 
-```cap deploy:setup
+```
+cap deploy:setup
 ```
 
 Редактировать мы будем только доступы к базе данных. Сначала создадим базу данных и пользователя для нее.
 
-```$ mysql -u root -p
-mysql&gt; CREATE DATABASE `testapp` CHARACTER SET utf8 COLLATE utf8_general_ci;
-mysql&gt; GRANT ALL PRIVILEGES ON testapp.* TO testapp@localhost IDENTIFIED BY 'password' WITH GRANT OPTION;
+```
+$ mysql -u root -p
+mysql CREATE DATABASE `testapp` CHARACTER SET utf8 COLLATE utf8_general_ci;
+mysql GRANT ALL PRIVILEGES ON testapp.* TO testapp@localhost IDENTIFIED BY 'password' WITH GRANT OPTION;
 ```
 
 Теперь редактируем доступы к БД.
 
-```cd /var/www/testapp/shared/config
+```
+$ cd /var/www/testapp/shared/config
 $ nano database.yml 
 ```
 
@@ -707,19 +760,22 @@ $ nano database.yml
 
 Ну что ж, теперь зальем наше приложение на сервер и скомпилируем ассеты:
 
-```cap deploy:cold
+```
+$ cap deploy:cold
 ```
 
 Готово! Теперь вы можете наблюдать за вашим приложением из браузера по ссылке http://yoursuperrailsapp.com
 
 Осталось запускать unicorn сервер при каждом перезапуске дроплета.
 
-```$ sudo update-rc.d -f unicorn_testapp defaults
+```
+$ sudo update-rc.d -f unicorn_testapp defaults
 ```
 
 Теперь если вы изменяете код приложения, вам останется только запушить изменения в git репозиторий и сделать:
 
-```$ cap deploy
+```
+$ cap deploy
 ```
 
 после чего все изменения уже будут на вашем сервере. На этом все. Исходный код приложения можно взять тут: [Github][7], а рабочий пример тут: http://testapp.dev.istickz.ru/
