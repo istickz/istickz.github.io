@@ -1,7 +1,8 @@
 # Site settings
 title: 'Temur Fatkulin'
 description: 'Ruby делает наш мир проще!'
-url: 'http://istickz.ru/'
+url: 'https://istickz.ru/'
+enforce_ssl: istickz.ru
 baseurl: '/'
 google_analytics: 'UA-43434724-1'
 disqus_shortname: 'istickz'
