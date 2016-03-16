@@ -13,11 +13,11 @@ tags: ['ruby', 'locomotivecms', 'windows']
 
 Переходим сюда: <http://rubyinstaller.org/downloads/>, выбираем версию и устанавливаем. При установке не забудте поставить все галочки которые попросит инсталлятор.
 
-### [][1]{#user-content-development-kit.anchor}2. Устаноквка DevKit
+### 2. Устаноквка DevKit
 
 По ссылке выше находим ссылки для скачивания DevKit. Не забудьте скачать версию kit именно для вашей версии и разрядности интерпретатора Ruby.
 
-Распаковываем в любое место. Я распаковал сюда: C:\DevKit Далее, запустим консоль &#171;Start Command Prompt with Ruby&#187; из меню приложений Windows.  
+Распаковываем в любое место. Я распаковал сюда: C:\DevKit Далее, запустим консоль «Start Command Prompt with Ruby» из меню приложений Windows.  
 Переходим в папку с DevKit
 
 ```
@@ -101,7 +101,7 @@ Can't get the absolute path for the passed directory: ''!
 $ bundle exec wagon serve с:/testapp
 ```
 
-Либо отредактируйте файл wagon(C:\Ruby200\bin\wagon) добавив в самое начало файла строку: &#171;ARGV << Dir.pwd&#187;
+Либо отредактируйте файл wagon(C:\Ruby200\bin\wagon) добавив в самое начало файла строку: «ARGV << Dir.pwd»
 
 Также вы можете получать ошибку перед запуском сервера:
 
