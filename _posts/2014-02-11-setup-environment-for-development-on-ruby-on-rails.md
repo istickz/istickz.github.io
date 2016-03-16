@@ -20,50 +20,44 @@ tags: ['ruby', 'ruby-on-rails']
     5.1 Sublime Text 3  
     5.2 RubyMine
 
-Итак, поехали&#8230;
 
-## 1. Установка Git {#1git}
 
-```$ sudo apt-get install git-core
-```
+## 1. Установка Git
+
+{% highlight bash %}
+$ sudo apt-get install git-core
+{% endhighlight %}
 
 Проверяем версию:
 
-```
+{% highlight bash %}
 $ git --version
 git version 1.8.3.2
-```
+{% endhighlight %}
 
 Все отлично, давайте настроим git.
 
-```
+{% highlight bash %}
 $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
-```
+{% endhighlight %}
 
 * * *
 
 ## 2. Установка ZSH {#2zsh}
 
-```
+{% highlight bash %}
 $ sudo apt-get install zsh
-```
+{% endhighlight %}
 
 Приступим к украшательству.
 
-```
+{% highlight bash %}
 $ curl -L http://install.ohmyz.sh | sh
-```
+{% endhighlight %}
 
 Все, украшательства и настройки zsh готовы.
-
-Настало время переключиться на него. Это мы и сделаем:
-
-```
-$ sudo chsh -s $(which zsh) $(whoami)
-```
-
-После чего нужно будет перелогиниться и запустить консоль.
+Остается только перелогиниться и запустить консоль.
 
 Иииха! Теперь у нас самый клевый терминал в мире.  
 Сменить тему можно отредактировав строчку `ZSH_THEME` в `~/.zshrc`
@@ -78,11 +72,12 @@ $ sudo chsh -s $(which zsh) $(whoami)
 
 Ну что, потопали дальше?
 
-<pre class="code code-shell-cmd" title="triple click to select command">➜ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3```
+{% highlight zsh %}
+➜ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 
-```
+
 ➜ \curl -sSL https://get.rvm.io | bash -s stable
-```
+{% endhighlight %}
 
 Если словили такую ошибку:
 
