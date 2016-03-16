@@ -29,13 +29,13 @@ tags: ['ruby', 'ruby-on-rails', deploy, 'vps']
 
 В статье я буду работать с VPS купленным у [DigitalOcean][1].
 
-[DigitalOcean][1] предлагает самые демократические цены на виртуальные сервера с хорошим пингом даже из России. Кстати, ребята часто раздают промо коды для получения средств на оплату услуг. Например, сейчас активен вот этот промо-код: ![promo][2] Этот код эквивалентен $10, которых хватит на 2 месяца пользования виртуальным сервером.
+[DigitalOcean][1] предлагает самые демократические цены на виртуальные сервера с хорошим пингом даже из России. Кстати, ребята часто раздают промо коды для получения средств на оплату услуг. 
 
-## 1.Предподготовка {#1}
+## 1.Предподготовка 
 
 Перед покупкой дроплета я рекомендую содать SSH ключ для связки нашего компьютера и покупаемого дроплета.
 
-### 1.1 Создание SSH ключа {#11ssh}
+### 1.1 Создание SSH ключа
 
 Переходим в директорию SSH ключей
 
@@ -84,7 +84,7 @@ The key's randomart image is:
 +-----------------+
 ```
 
-### 1.2 Добавление ключа в профиль на DO {#12do}
+### 1.2 Добавление ключа в профиль на DO 
 
 Скопируем созданный ключ:
 
@@ -96,7 +96,7 @@ $ xclip -sel clip < ~/.ssh/digital_ocean_rsa.pub
 
 * * *
 
-## 2. Создание дроплета {#2}
+## 2. Создание дроплета 
 
 Переходим в Droplets -> [Create Droplet][4]
 
@@ -115,7 +115,7 @@ $ xclip -sel clip < ~/.ssh/digital_ocean_rsa.pub
 
 * * *
 
-## 3. Настройка дроплета {#3}
+## 3. Настройка дроплета 
 
 Итак, у нас есть дроплет, пора бы соединиться с ним.  
 IP своего сервера можно посмотреть в самом верху панели управления дроплетом.
@@ -132,9 +132,9 @@ root@Jarvis:~#
 
 Отлично, теперь нужно позаботиться о безопасности дроплета.
 
-### 3.1 Безопасность {#31}
+### 3.1 Безопасность 
 
-#### Добавление пользователя {#}
+#### Добавление пользователя 
 
 ```
 adduser username
@@ -164,7 +164,7 @@ username ALL=(ALL:ALL) ALL
 Сохраняемся и выходим из редактора.
 
 
-#### Смена порта SSH {#ssh}
+#### Смена порта SSH 
 
 ```
 nano /etc/ssh/sshd_config
@@ -182,7 +182,7 @@ Port 22
 Port 6629
 ```
 
-#### Отключение входа root пользователем {#root}
+#### Отключение входа root пользователем 
 
 В этом же файле находим строку PermitRootLogin и ставим ей значение ‘no’:
 
@@ -235,7 +235,7 @@ $ ssh -p 6629 username@95.85.27.37
 
 На этом настройки безопасности не завершены, но к ним мы вернемся в конце этой статьи.
 
-## 3.2 Установка русской локали {#32}
+## 3.2 Установка русской локали 
 
 Если вам неспокойно от того что время от времени могут появляться сообщения такого рода:
 
@@ -253,7 +253,7 @@ $ localedef ru_RU.UTF-8 -i ru_RU -fUTF-8
 
 после этого вы на всегда забудете об ожибках локалейи и вам будет доступен ввод уириллицы из консоли.
 
-## 3.3 Обновление системы {#33}
+## 3.3 Обновление системы 
 
 Обновление системы рекомендуется делать сразу же после первой авторизации на сервере, но и сейчас не поздно сделать это.
 
@@ -262,16 +262,16 @@ $ sudo apt-get update
 $ sudo apt-get upgrade
 ```
 
-### 3.4 Установка RVM и Ruby {#34rvmruby}
+### 3.4 Установка RVM и Ruby 
 
-#### RVM {#rvm}
+#### RVM 
 
 ```
 $ \curl -sSL https://get.rvm.io | bash -s stable
 $ source /home/username/.rvm/scripts/rvm
 ```
 
-#### Установка всех зависимостей, которые могут пригодиться: {#}
+#### Установка всех зависимостей, которые могут пригодиться:
 
 ```
 $ rvm requirements
@@ -279,29 +279,29 @@ $ rvm requirements
 
 во время выполнения этой команды установятся следующие пакеты: `gawk, g++, gcc, make, libc6-dev, libreadline6-dev, zlib1g-dev, libssl-dev, libyaml-dev, libsqlite3-dev, sqlite3, autoconf, libgdbm-dev, libncurses5-dev, automake, libtool, bison, pkg-config, libffi-dev`
 
-#### Ruby 2.0.0: {#ruby200}
+#### Ruby 2.0.0: 
 
 ```
 rvm install 2.0.0 && rvm use 2.0.0 --default
 ```
 
-#### Установка последней версии RubyGems {#rubygems}
+#### Установка последней версии RubyGems
 
 ```
 $ rvm rubygems current
 ```
 
-### 3.5 Установка MySQL {#35mysql}
+### 3.5 Установка MySQL 
 
 ```
 $ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
 ```
 
-### 3.6 Установка Node.js {#36nodejs}
+### 3.6 Установка Node.js 
 
 Установку Node.js будем проводить с помощью NVM
 
-```
+{% highlight bash %}
 $ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
 
 $ source ~/.profile
@@ -323,10 +323,9 @@ $ nvm use v0.11.11
 Now using node v0.11.11
 $ nvm alias default v0.11.11
 default - v0.11.11
+{% endhighlight %}
 
-```
-
-### 3.7 Установка NGINX {#37nginx}
+### 3.7 Установка NGINX 
 
 ```
 $ sudo apt-get install nginx
@@ -339,9 +338,9 @@ $ sudo service nginx start
 
 * * *
 
-## 4. Деплой Rails приложения {#4rails}
+## 4. Деплой Rails приложения 
 
-### 4.1 Создание тестового приложения {#41}
+### 4.1 Создание тестового приложения 
 
 Отсоединимся от сервера и в директории с нашими разработками создадим тестовое приложение
 
@@ -356,44 +355,44 @@ $ git commit -m "initial commit"
 $ git remote add origin https://github.com/istickz/testapp.git
 ```
 
-#### Изменим конфигурацию доступа к MySQL и удалим секцию production. {#mysqlproduction}
+#### Изменим конфигурацию доступа к MySQL и удалим секцию production. 
 
 testapp/config/database.yml
 
-```    
-    development:
-      adapter: mysql2
-      encoding: utf8
-      database: testapp_development
-      pool: 5
-      username: root
-      password: 121212
-      socket: /var/run/mysqld/mysqld.sock
-    
-    test:
-      adapter: mysql2
-      encoding: utf8
-      database: testapp_test
-      pool: 5
-      username: root
-      password: 121212
-      socket: /var/run/mysqld/mysqld.sock
-```    
+{% highlight yaml %} 
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: testapp_development
+  pool: 5
+  username: root
+  password: 121212
+  socket: /var/run/mysqld/mysqld.sock
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: testapp_test
+  pool: 5
+  username: root
+  password: 121212
+  socket: /var/run/mysqld/mysqld.sock
+{% endhighlight %}
 
 Секцию production я предлагаю вынести в отдельный файл:
 
 config/production_database.yml
 
-```    
-    production:
-      adapter: mysql2
-      encoding: utf8
-      database: testapp
-      pool: 5
-      username: someuser
-      password: somepassword
-      socket: /var/run/mysqld/mysqld.sock
-```    
+{% highlight yaml %} 
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: testapp
+  pool: 5
+  username: someuser
+  password: somepassword
+  socket: /var/run/mysqld/mysqld.sock
+{% endhighlight %}   
 
 и добавить в файл .gitignore
 
@@ -410,7 +409,7 @@ $ git add /config/database.yml
 $ git commit -m "configure only for test and development"
 ```
 
-#### Добавим немного фунциональности нашему приложению. {#}
+#### Добавим немного фунциональности нашему приложению. 
 
 Пусть наше приложение будет блогом:
 
@@ -422,13 +421,13 @@ $ rails g scaffold Post title:string description:text
 
 testapp/config/routes.rb
 
-```
+{% highlight ruby %}
 Testapp::Application.routes.draw do
   resources :posts
 
   root 'posts#index'
 end
-```
+{% endhighlight %}
 
 Создадим базу данных и накатим миграции:
 
@@ -440,22 +439,22 @@ $ rake db:migrate
 Пока изменений не накопилось достаточно много, нужно их закоммитить.
 
 ```
-git add config/routes.rb 
-git commit -m "now posts is a root page"
-git add .
-git commit -m "add posts"
-git push origin master
+$ git add config/routes.rb 
+$ git commit -m "now posts is a root page"
+$ git add .
+$ git commit -m "add posts"
+$ git push origin master
 ```
 
-### 4.2 Деплой нашего приложения {#42}
+### 4.2 Деплой нашего приложения 
 
-#### Capistrano {#capistrano}
+#### Capistrano
 
 Разворачиванием нашего приложения будет заниматься [Capistrano][6]
 
 В Gemfile добавим следующие строки:
 
-```
+{% highlight ruby %}
 group :development do
   gem 'rvm-capistrano'
   gem 'capistrano'
@@ -464,7 +463,7 @@ end
 group :production do
   gem 'unicorn'
 end
-```
+{% endhighlight %}
 
 Сapistrano будет отвечать за выполнение команд, а unicorn у нас будет в качестве сервера приложения.
 
@@ -477,14 +476,14 @@ $ git commit -am "add unicorn and capistrano gems"
 
 И создаем файлы конфигурации для Capistrano:
 
-```
+{% highlight bash %}
 $ capify .
 [add] writing './Capfile'
 [add] writing './config/deploy.rb'
 [done] capified!
-echo "/config/deploy.rb"  .gitignore
-git commit -am "ignore deploy configuration"
-```
+$ echo "/config/deploy.rb"  .gitignore
+$ git commit -am "ignore deploy configuration"
+{% endhighlight %}
 
 Теперь нужно создать еще несколько конфигурационных файлов:
 
@@ -496,76 +495,76 @@ $ touch config/unicorn_init.sh
 
 * * *
 
-#### Редактирование конфигурационных файлов {#}
+#### Редактирование конфигурационных файлов 
 
 /Capfile
 
-```      
-    load 'deploy'
-    load 'deploy/assets'
-    load 'config/deploy'
-```    
+{% highlight ruby %}    
+load 'deploy'
+load 'deploy/assets'
+load 'config/deploy'
+{% endhighlight %}
     
 
 /config/deploy.rb
 
-```    
-    require "rvm/capistrano"
-    require "bundler/capistrano"
-    
-    set :application, "testapp"
-    set :shared_children, shared_children
-    set :repository,  "git@github.com:istickz/testapp.git"
-    set :deploy_to, "/var/www/testapp"
-    set :scm, :git
-    set :branch, "master"
-    set :user, "username"
-    set :group, "username"
-    set :use_sudo, false
-    set :rails_env, "production"
-    set :deploy_via, :copy
-    set :ssh_options, { :forward_agent => true, :port => 6629 }
-    set :keep_releases, 5
-    default_run_options[:pty] = true
-    server "XX.XX.XX.XX", :app, :web, :db, :primary => true
-    
-    after "deploy", "deploy:cleanup"
-    
-    namespace :deploy do
-      %w[start stop restart].each do |command|
-        desc "#{command} unicorn server"
-        task command, roles: :app, except: {no_release: true} do
-          run "/etc/init.d/unicorn_#{application} #{command}"
-        end
-      end
-    
-      task :setup_config, roles: :app do
-        sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-        sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
-        run "mkdir -p #{shared_path}/config"
-        put File.read("config/production_database.yml"), "#{shared_path}/config/database.yml"
-        puts "Теперь вы можете отредактировать файлы в  #{shared_path}."
-      end
-      after "deploy:setup", "deploy:setup_config"
-    
-      task :symlink_config, roles: :app do
-        run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-      end
-      after "deploy:finalize_update", "deploy:symlink_config"
-    
-      desc "Make sure local git is in sync with remote."
-      task :check_revision, roles: :web do
-        unless `git rev-parse HEAD` == `git rev-parse origin/master`
-          puts "WARNING: HEAD is not the same as origin/master"
-          puts "Run `git push` to sync changes."
-          exit
-        end
-      end
-      before "deploy", "deploy:check_revision"
-    
+{% highlight ruby %}
+require "rvm/capistrano"
+require "bundler/capistrano"
+
+set :application, "testapp"
+set :shared_children, shared_children
+set :repository,  "git@github.com:istickz/testapp.git"
+set :deploy_to, "/var/www/testapp"
+set :scm, :git
+set :branch, "master"
+set :user, "username"
+set :group, "username"
+set :use_sudo, false
+set :rails_env, "production"
+set :deploy_via, :copy
+set :ssh_options, { :forward_agent => true, :port => 6629 }
+set :keep_releases, 5
+default_run_options[:pty] = true
+server "XX.XX.XX.XX", :app, :web, :db, :primary => true
+
+after "deploy", "deploy:cleanup"
+
+namespace :deploy do
+  %w[start stop restart].each do |command|
+    desc "#{command} unicorn server"
+    task command, roles: :app, except: {no_release: true} do
+      run "/etc/init.d/unicorn_#{application} #{command}"
     end
+  end
+
+  task :setup_config, roles: :app do
+    sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
+    sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
+    run "mkdir -p #{shared_path}/config"
+    put File.read("config/production_database.yml"), "#{shared_path}/config/database.yml"
+    puts "Теперь вы можете отредактировать файлы в  #{shared_path}."
+  end
+  after "deploy:setup", "deploy:setup_config"
+
+  task :symlink_config, roles: :app do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+  after "deploy:finalize_update", "deploy:symlink_config"
+
+  desc "Make sure local git is in sync with remote."
+  task :check_revision, roles: :web do
+    unless `git rev-parse HEAD` == `git rev-parse origin/master`
+      puts "WARNING: HEAD is not the same as origin/master"
+      puts "Run `git push` to sync changes."
+      exit
+    end
+  end
+  before "deploy", "deploy:check_revision"
+
+end
     
-```    
+{% endhighlight %}
 
 config/nginx.conf
 
@@ -603,7 +602,7 @@ config/nginx.conf
 
 config/unicorn.rb
 
-```    
+{% highlight ruby %}
     root = "/var/www/testapp/current"
     working_directory root
     pid "#{root}/tmp/pids/unicorn.pid"
@@ -619,13 +618,12 @@ config/unicorn.rb
     before_exec do |_|
       ENV["BUNDLE_GEMFILE"] = File.join(root, 'Gemfile')
     end
-```    
+{% endhighlight %}
     
 
 config/unicorn_init.sh
 
-    
-```    
+{% highlight bash %}
     #!/bin/sh
     ### BEGIN INIT INFO
     # Provides:          unicorn
@@ -710,13 +708,12 @@ config/unicorn_init.sh
       exit 1
       ;;
     esac
-```    
-    
+{% endhighlight %}
 
 Не забываем сделать файл исполняемым.
 
 ```
-chmod +x config/unicorn_init.sh 
+$ chmod +x config/unicorn_init.sh 
 ```
 
 Запушим конфигурационные файлы в репозиторий:
@@ -732,22 +729,22 @@ $ git push origin master
 Конфигурационные файлы готовы, пора приступать к заливке приложения, но прежде давайте заново авторизуемся на сервере и выставим права на папку /var/www/ для пользователя username:
 
 ```
-sudo chown -R username:username /var/www
-sudo chmod -R g+w /var/www
+$ sudo chown -R username:username /var/www
+$ sudo chmod -R g+w /var/www
 ```
 
 Теперь можно спокойно сказать Capistrano, чтобы подготовило необходимую структуру папок на сервере и закинуло конфигурационные файлы куда нужно.
 
 ```
-cap deploy:setup
+$ cap deploy:setup
 ```
 
 Редактировать мы будем только доступы к базе данных. Сначала создадим базу данных и пользователя для нее.
 
 ```
 $ mysql -u root -p
-mysql CREATE DATABASE `testapp` CHARACTER SET utf8 COLLATE utf8_general_ci;
-mysql GRANT ALL PRIVILEGES ON testapp.* TO testapp@localhost IDENTIFIED BY 'password' WITH GRANT OPTION;
+mysql> CREATE DATABASE `testapp` CHARACTER SET utf8 COLLATE utf8_general_ci;
+mysql> GRANT ALL PRIVILEGES ON testapp.* TO testapp@localhost IDENTIFIED BY 'password' WITH GRANT OPTION;
 ```
 
 Теперь редактируем доступы к БД.
