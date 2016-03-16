@@ -49,6 +49,7 @@ https://oauth.vk.com/authorize?
 Ну, что ж, начнем писать наше приложение.
 
 ```ruby
+
 require 'vkontakte_api'
 
 VK_APP_ID = 'ID приложения'
