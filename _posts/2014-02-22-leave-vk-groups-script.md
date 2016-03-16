@@ -20,17 +20,10 @@ tags: ['ruby', 'vkontakte']
 
 Для доступа к vk api я буду использовать гем [vkontakte_api][1]
 
-Для начала нужно будет создать приложение. Переходим по ссылке <http://vk.com/editapp?act=create>
-
-[<img title="" src="http://i1.wp.com/istickz.ru/wp-content/uploads/2014/02/create_app.png?w=768" alt="create_app" data-recalc-dims="1" />][2]
-
+Для начала нужно будет создать приложение. Переходим по ссылке http://vk.com/editapp?act=create
 Указываем имя и тип приложения. Далее нас попросят ввести код, который отправят по смс.  
 Вводим его.
-
-После чего добавляем описание и иконки:
-
-[<img title="" src="http://i0.wp.com/istickz.ru/wp-content/uploads/2014/02/vk_leaver_info.png?w=768" alt="vk<em>leaver</em>info" data-recalc-dims="1" />][3]
-
+После чего добавляем описание и иконки/
 Все, приложение готово. Осталось только взять ID нашего приложения и секретный ключ приложения.  
 ID нужен для получения токена, а секретный ключ для работы самого приложения. Для этого преходим в настройки, забираем ID и начинаем создавать токен. Нам нужны права только для группы и, чтобы токен не имел срока годности, а это значит что нужно ввести в адресную строку следующую ссылку:
 
@@ -48,7 +41,7 @@ https://oauth.vk.com/authorize?
 
 Ну, что ж, начнем писать наше приложение.
 
-```ruby
+{% highlight ruby linenos%}
 
 require 'vkontakte_api'
 
@@ -92,7 +85,9 @@ client_groups.each do |group_id|
   puts "-"*50
 end
 
-```
+
+{% endhighlight %}
+
 
 Готово!  
 Выполняем `$ ruby app.rb` из консоли и смело отвечаем на вопросы.
@@ -101,9 +96,9 @@ end
 
 Внимание! Если у вас `require 'vkontakte_api` вывалился с ошибкой:
 
-```
+{% highlight zsh %}
 Gem::LoadError: Unable to activate faraday_middleware-0.9.0, because faraday-0.9.0 conflicts with faraday (&lt; 0.9, = 0.7.4)
-```
+{% endhighlight %}
 
 То нужно установить gem faraday помладше, ну например версии: 0.8.9
 
