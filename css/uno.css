@@ -1257,7 +1257,7 @@ hr {
 	vertical-align: middle;
 	position: relative;
 	z-index: 800;
-	padding: 0 60px; }
+	padding: 0 36px; }
 
 .panel-main__content {
 	max-width: 620px;
@@ -1389,7 +1389,8 @@ nav {
 			opacity: 1; }
 
 .navigation--social {
-	margin-left: 1.5em; }
+	margin-left: .5em;
+	margin-right: .5em; }
 	.navigation--social a {
 		padding: 6px 8px 6px 9px; }
 		.navigation--social a .label {
