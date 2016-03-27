@@ -1,5 +1,5 @@
 ---
-layout: cv
+layout: document
 title: Темур Фаткулин
 permalink: /cv
 ---
