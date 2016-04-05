@@ -46,15 +46,15 @@ dl {
   border: 1px solid rgba(0, 172, 189, 0.28);
 }
 
+dd {
+  margin-bottom: 2em;
+  margin-left: 32%;
+}
+
 dt {
   float: left;
   clear: left;
   width: 32%;
-}
-
-dd {
-  margin-bottom: 2em;
-  margin-left: 32%;
 }
 
 p {
