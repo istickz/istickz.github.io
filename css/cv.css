@@ -1,103 +1,101 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,700,500,500italic,700italic&subset=latin,cyrillic);
 
 body {
-    width: 800px;
-    margin: auto;
-    padding: 10px 10px 10px 10px;
-
-    background: #fdfdfd;
-    color: #5F5A5A;
-    font-size: 1em;
-    line-height: 1.4;
-    font-family: 'Ubuntu', sans-serif;
+  width: 800px;
+  margin: auto;
+  padding: 10px 10px 10px 10px;
+  background: #fdfdfd;
+  color: #5F5A5A;
+  font-size: 1em;
+  line-height: 1.4;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 a {
-    color: #00acbd;
-    text-decoration: none;
-    transition: .25s;
+  color: #00acbd;
+  text-decoration: none;
+  transition: .25s;
 }
+
 a:hover {
-    color: #004f57;
+  color: #004f57;
 }
+
 a:active, a:hover {
-    outline: 0;
+  outline: 0;
 }
+
 h1 {
-    font-size: 46px;
-    color: #5F5A5A;
+  font-size: 46px;
+  color: #5F5A5A;
 
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
-/* Titles of categories */
 h2 {
-    margin-top: 3em;
+  margin-top: 3em;
 }
 
 strong {
-    color: #666;
+  color: #666;
 }
 
-
-/* Definitions */
 dl {
-    padding: 15px 20px;
-    margin-top: 1em;
-    border: 1px solid rgba(0, 172, 189, 0.28);
+  padding: 15px 20px;
+  margin-top: 1em;
+  border: 1px solid rgba(0, 172, 189, 0.28);
 }
 
 dt {
-    float: left;
-    clear: left;
-    width: 32%;
+  float: left;
+  clear: left;
+  width: 32%;
 }
 
 dd {
-    margin-left: 32%;
-    margin-bottom: 2em;
+  margin-left: 32%;
+  margin-bottom: 2em;
 }
 
 p {
-    margin-top: 0;
-    margin-bottom: 7px;
+  margin-top: 0;
+  margin-bottom: 7px;
 }
 
 blockquote {
-    text-align: center
+  text-align: center
 }
 
-
 hr {
-    color: #A6A6A6;
+  color: #A6A6A6;
 }
 
 dt, dd {
-    padding-top: 2em;
+  padding-top: 2em;
 }
 
 ul {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 }
 
 li {
-    margin-bottom: 1em;
-    margin-top: 1em;
-    list-style: none;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  list-style: none;
 
 }
 
 li:before {
-    font-size: 18px;
-    content: "";
-    border-color: transparent #00acbd;
-    border-style: solid;
-    border-width: 0.35em 0 0.35em 0.45em;
-    display: block;
-    height: 0;
-    width: 0;
-    margin-top: 3px;
-    position: absolute;
-    margin-left: -20px;
-    color: #00acbd;
+  font-size: 18px;
+  content: "";
+  border-color: transparent #00acbd;
+  border-style: solid;
+  border-width: 0.35em 0 0.35em 0.45em;
+  display: block;
+  height: 0;
+  width: 0;
+  margin-top: 3px;
+  position: absolute;
+  margin-left: -20px;
+  color: #00acbd;
 }
