@@ -6,7 +6,7 @@ body {
     padding: 10px 10px 10px 10px;
 
     background: #fdfdfd;
-    color: #333;
+    color: #5F5A5A;
     font-size: 1em;
     line-height: 1.4;
     font-family: 'Ubuntu', sans-serif;
@@ -25,7 +25,7 @@ a:active, a:hover {
 }
 h1 {
     font-size: 46px;
-    color: #757575;
+    color: #5F5A5A;
 
     margin-bottom: 15px;
 }
@@ -35,14 +35,15 @@ h2 {
     margin-top: 3em;
 }
 
-h3 {
-    font-weight: normal;
+strong {
+    color: #666;
 }
+
 
 /* Definitions */
 dl {
     margin-top: 1em;
-    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 172, 189, 0.28);
     padding: 15px 10px;
 }
 
@@ -62,12 +63,11 @@ p {
     margin-bottom: 7px;
 }
 
-/* Blockquotes */
 blockquote {
     text-align: center
 }
 
-/* Horizontal separators */
+
 hr {
     color: #A6A6A6;
 }
@@ -86,6 +86,7 @@ li {
     list-style: none;
 
 }
+
 li:before {
     font-size: 18px;
     content: "";
@@ -99,5 +100,4 @@ li:before {
     position: absolute;
     margin-left: -20px;
     color: #00acbd;
-
 }
