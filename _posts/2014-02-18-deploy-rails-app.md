@@ -110,7 +110,7 @@ $ xclip -sel clip < ~/.ssh/digital_ocean_rsa.pub
 
  
 
-После выбора нужных пунктов смело нажимаем кнопку Create Droplet и через некоторое время нас перекидывает вот в такую симпатичную панель управления дроплетом. [<img title="" src="http://i2.wp.com/istickz.ru/wp-content/uploads/2014/02/do-panel.png?w=768" alt="do-panel" data-recalc-dims="1" />][5]  
+После выбора нужных пунктов смело нажимаем кнопку Create Droplet и через некоторое время нас перекидывает вот в такую симпатичную панель управления дроплетом.  
 После создания дроплета, root доступ к машине будет возможен только по ssh ключу, т.к. мы его подключили при создании дроплета. Впрочем скоро мы отключим root доступ из соображений безопасности.
 
 * * *
@@ -302,27 +302,15 @@ $ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
 Установку Node.js будем проводить с помощью NVM
 
 {% highlight bash %}
-$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
-
-$ source ~/.profile
-$ nvm ls-remote
-   v0.1.14
-   v0.1.15
-   v0.1.16
-..
-..
-   v0.11.9
-  v0.11.10
-  v0.11.11
-
-$ nvm install 0.11.11
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+$ nvm install node
 $ node --version
-v0.11.11
+v6.0.0
+{% endhighlight %}
 
-$ nvm use v0.11.11 
-Now using node v0.11.11
-$ nvm alias default v0.11.11
-default - v0.11.11
+{% highlight bash %}
+$ n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
+
 {% endhighlight %}
 
 ### 3.7 Установка NGINX 
