@@ -82,6 +82,11 @@ permalink: /cv
  - [Otto by Hashicorp](https://github.com/hashicorp/otto)
  - [Spree](https://github.com/spree/spree)
 
+## RubyGems
+
+ - [random_org_http_api](https://rubygems.org/gems/random_org_http_api), 
+
+
 ## Образование
 
 *2008-2014*
