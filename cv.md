@@ -84,7 +84,7 @@ permalink: /cv
 
 ## RubyGems
 
- - [random_org_http_api](https://rubygems.org/gems/random_org_http_api), 
+ - [random_org_http_api](https://rubygems.org/gems/random_org_http_api) 
 
 
 ## Образование
