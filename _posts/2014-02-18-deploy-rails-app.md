@@ -211,18 +211,10 @@ reload ssh
 ssh -p 6629 username@123.123.123.123
 ```
 
-Вводим пароль и мы залогинены под нашим пользователем. Теперь скопируем ssh ключ нашему пользователю.
-
-Создадим папку ssh
-
-```
-username@Jarvis:~$ mkdir .ssh
-```
-
 Завершаем ssh соединение, чтобы скопировать ssh ключ с локального компьютера.
 
 ```
-$ cat ~/.ssh/digital_ocean_rsa.pub | ssh -p 6629 username@xxx.xxx.xxx.xxx "cat  ~/.ssh/authorized_keys"
+$ cat ~/.ssh/igital_ocean_rsa.pub | ssh -p 6629 username@xxx.xxx.xxx.xxx "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
 Если все прошло успешно, то пробуем заново залогиниться на сервере:
