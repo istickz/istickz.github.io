@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,700,500,500italic,700italic&subset=latin,cyrillic);
 
 body {
-  width: 800px;
+  max-width: 960px;
+  min-width: 320px;
   margin: auto;
   padding: 10px 10px 10px 10px;
   background: #fdfdfd;
@@ -26,14 +27,14 @@ a:active, a:hover {
 }
 
 h1 {
-  font-size: 46px;
+  font-size: 3em;
   color: #5F5A5A;
-
   margin-bottom: 15px;
 }
 
 h2 {
-  margin-top: 3em;
+  margin-top: 2em;
+  font-size: 1.4em;
 }
 
 strong {
@@ -76,6 +77,7 @@ dt, dd {
 
 ul {
   margin-bottom: 2em;
+  padding-left: 1.3em;
 }
 
 li {
@@ -98,4 +100,8 @@ li:before {
   position: absolute;
   margin-left: -20px;
   color: #00acbd;
+}
+
+p, ul {
+  font-size: 0.95em;
 }
