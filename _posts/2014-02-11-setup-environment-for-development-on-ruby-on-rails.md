@@ -24,37 +24,37 @@ tags: ['ruby', 'ruby-on-rails']
 
 ## 1. Установка Git
 
-{% highlight bash %}
+```bash
 $ sudo apt-get install git-core
-{% endhighlight %}
+```
 
 Проверяем версию:
 
-{% highlight bash %}
+```bash
 $ git --version
 git version 1.8.3.2
-{% endhighlight %}
+```
 
 Все отлично, давайте настроим git.
 
-{% highlight bash %}
+```bash
 $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
-{% endhighlight %}
+```
 
 * * *
 
 ## 2. Установка ZSH 
 
-{% highlight bash %}
+```bash
 $ sudo apt-get install zsh
-{% endhighlight %}
+```
 
 Приступим к украшательству.
 
-{% highlight bash %}
+```bash
 $ curl -L http://install.ohmyz.sh | sh
-{% endhighlight %}
+```
 
 Все, украшательства и настройки zsh готовы.
 Остается только перелогиниться и запустить консоль.
@@ -72,12 +72,12 @@ $ curl -L http://install.ohmyz.sh | sh
 
 Ну что, потопали дальше?
 
-{% highlight zsh %}
+```bash
 ➜ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 
 
 ➜ \curl -sSL https://get.rvm.io | bash -s stable
-{% endhighlight %}
+```
 
 Если словили такую ошибку:
 

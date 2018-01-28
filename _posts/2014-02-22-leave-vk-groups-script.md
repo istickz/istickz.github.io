@@ -41,7 +41,7 @@ https://oauth.vk.com/authorize?
 
 Ну, что ж, начнем писать наше приложение.
 
-{% highlight ruby linenos%}
+```ruby
 
 require 'vkontakte_api'
 
@@ -86,7 +86,7 @@ client_groups.each do |group_id|
 end
 
 
-{% endhighlight %}
+```
 
 
 Готово!  
@@ -96,9 +96,9 @@ end
 
 Внимание! Если у вас `require 'vkontakte_api` вывалился с ошибкой:
 
-{% highlight zsh %}
+```bash
 Gem::LoadError: Unable to activate faraday_middleware-0.9.0, because faraday-0.9.0 conflicts with faraday (< 0.9, = 0.7.4)
-{% endhighlight %}
+```
 
 То нужно установить gem faraday помладше, ну например версии: 0.8.9
 

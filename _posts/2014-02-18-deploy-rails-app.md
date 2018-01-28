@@ -45,7 +45,8 @@ $ cd ~/.ssh
 
 Создадим новый ключ для DigitalOcean
 
-```$ ssh-keygen -t rsa -C "your_email@example.com"
+```
+$ ssh-keygen -t rsa -C "your_email@example.com"
 Generating public/private rsa key pair.
 ```
 
@@ -293,17 +294,17 @@ $ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
 
 Установку Node.js будем проводить с помощью NVM
 
-{% highlight bash %}
+```bash
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 $ nvm install node
 $ node --version
 v6.0.0
-{% endhighlight %}
+```
 
-{% highlight bash %}
+```bash
 $ n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
 
-{% endhighlight %}
+```
 
 ### 3.7 Установка NGINX 
 
@@ -339,7 +340,7 @@ $ git remote add origin https://github.com/istickz/testapp.git
 
 testapp/config/database.yml
 
-{% highlight yaml %} 
+```yaml
 development:
   adapter: mysql2
   encoding: utf8
@@ -357,13 +358,13 @@ test:
   username: root
   password: 121212
   socket: /var/run/mysqld/mysqld.sock
-{% endhighlight %}
+```
 
 Секцию production я предлагаю вынести в отдельный файл:
 
 config/production_database.yml
 
-{% highlight yaml %} 
+```yaml
 production:
   adapter: mysql2
   encoding: utf8
@@ -372,7 +373,7 @@ production:
   username: someuser
   password: somepassword
   socket: /var/run/mysqld/mysqld.sock
-{% endhighlight %}   
+```   
 
 и добавить в файл .gitignore
 
@@ -401,13 +402,13 @@ $ rails g scaffold Post title:string description:text
 
 testapp/config/routes.rb
 
-{% highlight ruby %}
+```ruby
 Testapp::Application.routes.draw do
   resources :posts
 
   root 'posts#index'
 end
-{% endhighlight %}
+```
 
 Создадим базу данных и накатим миграции:
 
@@ -434,7 +435,7 @@ $ git push origin master
 
 В Gemfile добавим следующие строки:
 
-{% highlight ruby %}
+```ruby
 group :development do
   gem 'rvm-capistrano'
   gem 'capistrano'
@@ -443,7 +444,7 @@ end
 group :production do
   gem 'unicorn'
 end
-{% endhighlight %}
+```
 
 Сapistrano будет отвечать за выполнение команд, а unicorn у нас будет в качестве сервера приложения.
 
@@ -456,14 +457,14 @@ $ git commit -am "add unicorn and capistrano gems"
 
 И создаем файлы конфигурации для Capistrano:
 
-{% highlight bash %}
+```bash
 $ capify .
 [add] writing './Capfile'
 [add] writing './config/deploy.rb'
 [done] capified!
 $ echo "/config/deploy.rb"  .gitignore
 $ git commit -am "ignore deploy configuration"
-{% endhighlight %}
+```
 
 Теперь нужно создать еще несколько конфигурационных файлов:
 
@@ -479,16 +480,16 @@ $ touch config/unicorn_init.sh
 
 /Capfile
 
-{% highlight ruby %}    
+```ruby    
 load 'deploy'
 load 'deploy/assets'
 load 'config/deploy'
-{% endhighlight %}
+```
     
 
 /config/deploy.rb
 
-{% highlight ruby %}
+```ruby
 require "rvm/capistrano"
 require "bundler/capistrano"
 
@@ -544,7 +545,7 @@ namespace :deploy do
 
 end
     
-{% endhighlight %}
+```
 
 config/nginx.conf
 
@@ -582,7 +583,7 @@ config/nginx.conf
 
 config/unicorn.rb
 
-{% highlight ruby %}
+```ruby
     root = "/var/www/testapp/current"
     working_directory root
     pid "#{root}/tmp/pids/unicorn.pid"
@@ -598,12 +599,12 @@ config/unicorn.rb
     before_exec do |_|
       ENV["BUNDLE_GEMFILE"] = File.join(root, 'Gemfile')
     end
-{% endhighlight %}
+```
     
 
 config/unicorn_init.sh
 
-{% highlight bash %}
+```bash
     #!/bin/sh
     ### BEGIN INIT INFO
     # Provides:          unicorn
@@ -688,7 +689,7 @@ config/unicorn_init.sh
       exit 1
       ;;
     esac
-{% endhighlight %}
+```
 
 Не забываем сделать файл исполняемым.
 
