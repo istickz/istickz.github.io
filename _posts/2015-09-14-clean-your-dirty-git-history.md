@@ -57,7 +57,6 @@ $ bfg --strip-blobs-bigger-than 20M  mydirtyrepo.git
 $ cd some-big-repo.git
 $ git reflog expire --expire=now --all && git gc --prune=now --aggressive
 $ git push
-
 ```
 
 На этом все. Ведите вашу историю чистой и воздерживаетесь от случайных побуждений запушить что-то лишнее.  
