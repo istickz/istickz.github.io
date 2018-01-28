@@ -14,7 +14,7 @@ tags: ['ruby', 'vkontakte']
 Следующий код будет добавлять текущую дату и содержание гороскопа:
 
 
-{% highlight ruby %}
+```ruby
 require 'RMagick'
 # date и description мы будем накладывать на заготовку
 date =  "Четверг, 8 августа"
@@ -43,13 +43,13 @@ horo_description.annotate(canvas, 0,0,190,100, description.place(40)) {
 
 # Запишем все наши изменения в новый файл.
 canvas.write("test.jpg")
-{% endhighlight %}
+```
 
 На выходе получим вот это:
 
 Наверное вы заметили, что в коде представленном выше есть метод place. Он нужен для разбивки и переноса строк содержимого гороскопа.
 
-{% highlight ruby %}
+```ruby
 class String
   def place(count)
     words = self.split(" ") # Все слова из текста
@@ -72,11 +72,11 @@ class String
     return summary.join("\n")
   end
 end
-{% endhighlight %}  
+```  
 
 #### Отправка на стену группы Вконтакте Отправлять картинки на стену мы будем используя gem vkontakte_api
 
-{% highlight ruby %}
+```ruby
 require 'vkontakte_api'
 public_id = 'ID группы вконтакте'
 VkontakteApi.configure do |config|
@@ -112,14 +112,14 @@ save = app.photos.save_wall_photo(up)
 
 # Отправка на стену группы
 app.wall.post(attachments:save.first.id, owner_id: "-#{public_id}", from_group: 1 )
-{% endhighlight %}
+```
 
 Ну, генерация картинок у нас есть, отправка картинок тоже есть. Осталось только получать данные, которыми будем наполнять наши картинки.
 
 #### Парсинг гороскопов Гороскопы я буду брать с сайта ignio.com, тем более что они предоставляют получение гороскопов по XML. Парсить XML будем с помощью Nokogiri.
 
 
-{% highlight ruby %}
+```ruby
 require 'nokogiri'
 require 'open-uri'
 
@@ -129,7 +129,7 @@ feed = Nokogiri::XML open(url)
 feed.xpath("//aquarius//today")
 
 # => [#<Nokogiri::XML::Element:0x123abf8 name="today" children=[#<Nokogiri::XML::Text:0x123a928 "\nНе ждите от вашего любимого человека слишком многого. Он не волшебник, он только учится, поэтому угадать, а тем более исполнить все ваши желания одновременно (а особенно те, которые вы не высказали ему лично) он просто не в состоянии. Будьте милосердны – и будет вам счастье.\n">]>]
-{% endhighlight %}
+```
 
 Ну, собственно и все. Тексты мы получили, генератор картинок у нас есть, и выгрузка в группы вконтакте у нас тоже имеется. Осталось только все автоматизировать. Исходники готового приложения можно посмотреть [тут][1]. А [тут][2] можно посмотреть, что получилось.
 
