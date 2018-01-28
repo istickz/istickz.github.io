@@ -39,13 +39,13 @@ tags: ['ruby', 'ruby-on-rails', deploy, 'vps']
 
 Переходим в директорию SSH ключей
 
-```
+```bash
 $ cd ~/.ssh
 ```
 
 Создадим новый ключ для DigitalOcean
 
-```
+```bash
 $ ssh-keygen -t rsa -C "your_email@example.com"
 Generating public/private rsa key pair.
 ```
@@ -89,7 +89,7 @@ The key's randomart image is:
 
 Скопируем созданный ключ:
 
-```
+```bash
 $ xclip -sel clip < ~/.ssh/digital_ocean_rsa.pub
 ```
 
@@ -121,13 +121,13 @@ $ xclip -sel clip < ~/.ssh/digital_ocean_rsa.pub
 Итак, у нас есть дроплет, пора бы соединиться с ним.  
 IP своего сервера можно посмотреть в самом верху панели управления дроплетом.
 
-```
+```bash
 ssh root@xx.xx.xx.xx
 ```
 
 Если все хорошо, то видим нечто подобное:
 
-```
+```bash
 root@Jarvis:~# 
 ```
 
@@ -137,16 +137,16 @@ root@Jarvis:~#
 
 #### Добавление пользователя 
 
-```
-adduser username
+```bash
+$ adduser username
 ```
 
 Отвечаем на вопросы, подтверждаем информацию и пользователь готов.
 
 Теперь дадим ему нормальные права
 
-```
-visudo
+```bash
+$ visudo
 ```
 
 Находим следующие строки:
@@ -167,8 +167,8 @@ username ALL=(ALL:ALL) ALL
 
 #### Смена порта SSH 
 
-```
-nano /etc/ssh/sshd_config
+```bash
+$ nano /etc/ssh/sshd_config
 ```
 
 Находим строку:
@@ -202,25 +202,25 @@ AllowUsers username
 
 Перезагружаем SSH
 
-```
-reload ssh
+```bash
+$ reload ssh
 ```
 
 Теперь, создадим новую вкладку в терминале и попробуем соединиться
 
-```
-ssh -p 6629 username@123.123.123.123
+```bash
+$ ssh -p 6629 username@123.123.123.123
 ```
 
 Завершаем ssh соединение, чтобы скопировать ssh ключ с локального компьютера.
 
-```
+```bash
 $ cat ~/.ssh/igital_ocean_rsa.pub | ssh -p 6629 username@xxx.xxx.xxx.xxx "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
 Если все прошло успешно, то пробуем заново залогиниться на сервере:
 
-```
+```bash
 $ ssh -p 6629 username@95.85.27.37 
 ```
 
@@ -240,7 +240,7 @@ locale: Cannot set LC_ALL to default locale: No such file or directory
 
 то рекомендую поставить русскую локаль.
 
-```
+```bash
 $ localedef ru_RU.UTF-8 -i ru_RU -fUTF-8
 ```
 
@@ -250,7 +250,7 @@ $ localedef ru_RU.UTF-8 -i ru_RU -fUTF-8
 
 Обновление системы рекомендуется делать сразу же после первой авторизации на сервере, но и сейчас не поздно сделать это.
 
-```
+```bash
 $ sudo apt-get update
 $ sudo apt-get upgrade
 ```
@@ -259,7 +259,7 @@ $ sudo apt-get upgrade
 
 #### RVM 
 
-```
+```bash
 $ \curl -sSL https://get.rvm.io | bash -s stable
 $ source /home/username/.rvm/scripts/rvm
 ```

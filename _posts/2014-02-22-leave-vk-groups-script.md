@@ -96,7 +96,7 @@ end
 
 Внимание! Если у вас `require 'vkontakte_api` вывалился с ошибкой:
 
-```bash
+```
 Gem::LoadError: Unable to activate faraday_middleware-0.9.0, because faraday-0.9.0 conflicts with faraday (< 0.9, = 0.7.4)
 ```
 
