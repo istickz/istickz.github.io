@@ -20,13 +20,13 @@ tags: ['ruby', 'locomotivecms', 'windows']
 Распаковываем в любое место. Я распаковал сюда: `C:\DevKit` Далее, запустим консоль «Start Command Prompt with Ruby» из меню приложений Windows.  
 Переходим в папку с DevKit
 
-```
+```bash
 > cd c:\DevKit
 ```
 
 И собственно, производим установку DevKit
 
-```
+```bash
 > ruby dk.rb init
 > ruby dk.rb review
 > ruby dk.rb install
@@ -42,13 +42,13 @@ tags: ['ruby', 'locomotivecms', 'windows']
 
 #### Bundler
 
-```
+```bash
 > gem install bundler
 ```
 
 #### Rake
 
-```
+```bash
 > gem install rake
 ```
 
@@ -56,20 +56,20 @@ tags: ['ruby', 'locomotivecms', 'windows']
 
 ### 4. Установка LocomotiveCMS Wagon
 
-```
+```bash
 > gem install locomotivecms_wagon
 ```
 
 Проверяем версию:
 
-```
+```bash
 > wagon version
 1.4.0
 ```
 
 Отлично. Давайте создадим тестовый проект и запустим сервер.
 
-```
+```bash
 > wagon init testapp
 ....
 ....
@@ -80,7 +80,7 @@ Do you prefer HAML templates ? n
 
 Перейдем в приложение, установим недостающие гемы и запустим сервер:
 
-```
+```bash
 > cd testapp
 > bundle install
 > bundle exec wagon serve
@@ -96,7 +96,7 @@ Can't get the absolute path for the passed directory: ''!
 
 то запускайте сервер с указанием абсолютного пути к папке:
 
-```
+```bash
 > bundle exec wagon serve с:/testapp
 ```
 
@@ -113,13 +113,13 @@ Listening on 0.0.0.0:3333, CTRL+C to stop
 
 Чтобы избавиться от ошибки поиска ImageMagic заменим строчку в файле C:\Ruby200\lib\ruby\gems\2.0.0\gems\locomotivecms_wagon-1.4.0\lib\locomotive\wagon\misc\dragonfly.rb
 
-```
+```ruby
 convert = `which convert`.strip.presence || '/usr/bin/env convert' 
 ```
 
 на
 
-```
+```ruby
 convert = `where convert`.strip.presence
 ```
 
