@@ -55,7 +55,7 @@ http://www.vagrantup.com/downloads
 
 Инициализация виртуальной машины:
 
-```
+```bash
 > vagrant init leopard/rwprecise64
 ```
 
@@ -63,7 +63,7 @@ http://www.vagrantup.com/downloads
 
 Запуск виртуальной машины:
 
-```
+```bash
  > vagrant up
 ```
 
@@ -90,26 +90,26 @@ http://www.vagrantup.com/downloads
 
 Открываем конфигурационный файл Vagrantfile и добавляем туда строку:
 
-```
+```ruby
 config.vm.synced_folder "../projects/", "/home/vagrant/projects"
 ```
 
 `config.vm.synced_folder\` — принимает 2 параметра: локальную папку и папку на виртуальной машине, которые нужно связать. Путь к локальной папке относительный, то есть папка projects находится на один уровень выше чем rails-box. После сохранения файла перезапустим виртуальную машину:
 
-```
+```bash
 > vagrant reload
 ```
 
 Заново запускаем PuTTY и проверяем, работает ли все это:
 
-```
+```bash
 $ ls
 postinstall.sh  projects
 ```
 
 Отлично! Перейдем в папку projects и создадим там пустой файл:
 
-```
+```bash
 $ cd projects/
 $ touch sample.txt
 $ ls
@@ -126,13 +126,13 @@ sample.txt
 
 Находясь в PuTTY устанавливаем rails:
 
-```
+```bash
 $ gem install rails
 ```
 
 Далее переходим в папку projects, создаем новое приложение и запускаем сервер:
 
-```
+```bash
 $ cd projects
 $ rails new sampleapp
 $ cd sampleapp
