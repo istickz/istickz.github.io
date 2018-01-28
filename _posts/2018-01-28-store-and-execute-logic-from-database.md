@@ -97,7 +97,7 @@ JSON
 
 Давайте напишем условия, ипользуя формат JSON
 
-{% highlight ruby linenos%}
+```ruby
 require 'json_logic'
 require 'json'
 
@@ -112,7 +112,7 @@ rules = JSON.parse(rules_json)
 data = JSON.parse(user_params_json)
 JSONLogic.apply(rules, data)
 #=> true
-{% endhighlight %}
+```
 
 ### Скорость
 Выполнение данного условия показало скорость примено равную 19600 операций в секунду
