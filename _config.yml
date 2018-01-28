@@ -3,7 +3,6 @@ title: 'Temur Fatkulin'
 description: 'Ruby делает наш мир проще!'
 url: 'https://istickz.ru'
 enforce_ssl: istickz.ru
-baseurl: '/'
 google_analytics: 'UA-43434724-1'
 disqus_shortname: 'istickz'
 
@@ -30,11 +29,15 @@ permalink: /:year/:title/
 markdown: kramdown
 highlighter: rouge
 
+sass:
+    sass_dir: _sass
+    style: compressed
+
 kramdown:
   # use Github Flavored Markdown
   input: GFM
   # do not replace newlines by <br>s
   hard_wrap: false
 
-gems: ['jekyll-paginate']
-exclude: ['README.md', 'Gemfile', 'Gemfile.lock']
+plugins: ['jekyll-paginate']
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']
