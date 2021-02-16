@@ -1,12 +1,12 @@
 # Site settings
-title: 'Temur Fatkulin'
+title: 'Timur Fatkulin'
 description: 'Ruby делает наш мир проще!'
 url: 'https://istickz.ru'
 google_analytics: 'UA-43434724-1'
 disqus_shortname: 'istickz'
 
 author:
-  name:  'Temur Fatkulin'
+  name:  'Timur Fatkulin'
   email: temur.fatkulin@gmail.com
   twitter_username: temstickz
   facebook_username: temur.fatkulin
